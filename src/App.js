@@ -10,7 +10,7 @@ import OurTeam from "./views/pages/OurTeam/OurTeam";
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Home />}></Route>
