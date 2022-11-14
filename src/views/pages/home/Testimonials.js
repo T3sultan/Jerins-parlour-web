@@ -41,6 +41,11 @@ const Testimonials = () => {
           <People key={people._id} people={people} />
         ))}
       </div>
+      <div className="flex justify-center gap-1 py-6">
+        <div className="badge badge-xs"></div>
+        <div className="badge border-gray-400 bg-gray-400 badge-xs"></div>
+        <div className="badge border-gray-400 bg-gray-400 badge-xs"></div>
+      </div>
     </section>
   );
 };
