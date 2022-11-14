@@ -1,0 +1,27 @@
+[
+  {
+    "_id": 1,
+    "name": "Anti Age Face Treatment",
+    "price": 199,
+    "description": "We craft stunning and amazing web UI, using a well drafted UX to fit your product",
+    "image": "https://i.ibb.co/py5zjdv/Group-1372.png"
+  },
+  {
+    "_id": 2,
+
+    "name": "Hair Color & Styling",
+    "price": 120,
+    "description": "Amazing flyers, social media posts and brand representations that would make your brand stand out.",
+
+    "image": "https://i.ibb.co/XxCVfKW/Group-1373.png"
+  },
+  {
+    "_id": 3,
+
+    "name": "Skin Care Treatment",
+    "price": 299,
+    "description": "With well written codes, we build amazing apps for all platforms, mobile and web apps in general.",
+
+    "image": "https://i.ibb.co/Wnv2jDd/Group-1374.png"
+  }
+]

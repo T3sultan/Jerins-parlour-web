@@ -7,7 +7,7 @@ const Banner = () => {
   return (
     <div className="hero min-h-fit banner px-12">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img src={bannerImage} className="max-w-sm rounded-lg shadow-2xl" />
+        <img src={bannerImage} className="max-w-sm  rounded-lg shadow-2xl" />
         <div className=" lg:mr-20 ">
           <h1 className="text-5xl font-bold uppercase text-gray-800">
             Beauty Salon{" "}
