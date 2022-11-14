@@ -28,9 +28,9 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 navbarContainer px-12">
+    <div className="navbar  bg-base-100 navbarContainer px-12">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown ">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu sticky menu-compact dropdown-content mt-3 p-2 bg-base-100 rounded-box w-52 "
+            className="menu  menu-compact dropdown-content mt-3 p-2 bg-base-100 rounded-box w-52 "
           >
             {menuItems}
           </ul>

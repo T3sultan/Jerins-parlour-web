@@ -4,7 +4,7 @@ const Service = ({ service }) => {
   const { name, image, price, description } = service;
 
   return (
-    <div className="card bg-white border-gray-200 transition transform duration-500 hover:shadow-lg hover:scale-100 rounded relative">
+    <div className="card cursor-pointer bg-white border-gray-200 transition transform duration-500 hover:shadow-lg hover:scale-100 rounded relative">
       <figure className="px-10 pt-10">
         <img src={image} alt="Shoes" className="rounded-xl w-20" />
       </figure>

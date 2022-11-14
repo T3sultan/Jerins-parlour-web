@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Button from "../../components/common/Button";
 import Service from "./Service";
 
 const Services = () => {
@@ -17,6 +18,9 @@ const Services = () => {
         {services.map(service => (
           <Service key={service._id} service={service}></Service>
         ))}
+      </div>
+      <div className="flex justify-center mt-8">
+        <Button title={"Explore more"} />
       </div>
     </div>
   );
