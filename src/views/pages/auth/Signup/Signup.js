@@ -147,20 +147,18 @@ const Signup = () => {
             </Link>{" "}
           </p>
           <div className="divider">Or</div>
-          <button
-            // onClick={() => signInWithGoogle()}
-            className=" btn border bg-white text-black rounded-3xl "
-          >
-            <img className="w-8 rounded-2xl -mr-4" src={fb} alt="" />
-            <p className="text-center "> Continue with facebook</p>
-          </button>
-          <button
-            // onClick={() => signInWithGoogle()}
-            className="btn bg-white text-black rounded-3xl"
-          >
-            <img className="w-8 rounded-2xl -mr-4" src={g} alt="" />
-            <p className="text-center "> Continue with Google</p>
-          </button>
+          <div className="flex items-center h-10  border cursor-pointer rounded-3xl  w-full max-w-xs">
+            <img className="w-6 ml-2  rounded-xl " src={fb} alt="" />
+            <div className="flex justify-center ">
+              <h4 className="ml-10 text-sm ">Continue with Facebook</h4>
+            </div>
+          </div>
+          <div className="flex items-center h-10 border cursor-pointer rounded-3xl  w-full max-w-xs">
+            <img className="w-6 ml-2 " src={g} alt="" />
+            <div className="flex justify-center ">
+              <h4 className="ml-10 text-sm ">Continue with Google</h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>
