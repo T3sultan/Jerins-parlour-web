@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import login from "../../../../assets/parlour.png";
 import g from "../../../../assets/google_.png";
 import "../../home/Home.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
+import Loading from "../../../components/common/Loading";
 
 const Login = () => {
   const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  let errorMessage;
+
+  if (guser) {
+    console.log("user", guser);
+  }
+
+  if (guser) {
+    console.log("user", guser);
+    navigate(from, { replace: true });
+  }
+
+  if (gloading) {
+    return <Loading />;
+  }
+  if (gerror) {
+    errorMessage = <p className="text-red-500 text-sm">{gerror?.message}</p>;
+  }
 
   return (
     <div className="grid items-center h-full justify-items-center">

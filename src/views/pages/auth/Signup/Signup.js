@@ -1,26 +1,52 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../../pages/home/Home.css";
 import fb from "../../../../assets/facebook.png";
 import g from "../../../../assets/google_.png";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
+import Loading from "../../../components/common/Loading";
 
 const Signup = () => {
+  const [updateProfile, updating, uerror] = useUpdateProfile(auth);
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const navigate = useNavigate();
 
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = () => {};
+  const onSubmit = async data => {
+    console.log(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    console.log("update data");
+    // navigate("/home");
+  };
+  let errorMessage;
+  if (loading || gloading || updating) {
+    return <Loading />;
+  }
+  if (gerror || error || uerror) {
+    errorMessage = (
+      <p className="text-red-500 text-sm">
+        {error?.message || gerror?.message || uerror?.message}
+      </p>
+    );
+  }
+  if (user || guser) {
+    navigate("/home");
+  }
+
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -30,33 +56,16 @@ const Signup = () => {
             <div className="form-control w-full max-w-xs">
               <input
                 type="text"
-                placeholder="First Name"
-                className=" mt-4 w-full max-w-xs border-b border-gray-300 focus:outline-none text-black"
-                {...register("firstName", {
-                  required: { value: true, message: "First Name is required" },
-                })}
-              />
-              <label className="label">
-                {errors.firstName?.type === "required" && (
-                  <p className="text-red-400" role="alert">
-                    {errors.firstName.message}
-                  </p>
-                )}
-              </label>
-            </div>
-            <div className="form-control w-full max-w-xs">
-              <input
-                type="text"
-                placeholder="Last Name"
+                placeholder="Your Name"
                 className="mt-4 w-full max-w-xs border-b border-gray-300 focus:outline-none text-black"
-                {...register("lastName", {
-                  required: { value: true, message: "Last Name is required" },
+                {...register("name", {
+                  required: { value: true, message: "Name is required" },
                 })}
               />
               <label className="label">
-                {errors.lastName?.type === "required" && (
+                {errors.name?.type === "required" && (
                   <p className="text-red-400" role="alert">
-                    {errors.lastName.message}
+                    {errors.name.message}
                   </p>
                 )}
               </label>
@@ -64,7 +73,7 @@ const Signup = () => {
             <div className="form-control w-full max-w-xs">
               <input
                 type="email"
-                placeholder="Username or Email"
+                placeholder="Your Email"
                 className="mt-4 w-full max-w-xs border-b border-gray-300 focus:outline-none text-black"
                 {...register("email", {
                   required: { value: true, message: "Email is required" },
@@ -90,9 +99,9 @@ const Signup = () => {
             <div className="form-control w-full max-w-xs">
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="Your Password"
                 className="mt-4 w-full max-w-xs border-b border-gray-300 focus:outline-none text-black"
-                {...register("email", {
+                {...register("password", {
                   required: { value: true, message: "Password is required" },
                   minLength: {
                     value: 6,
@@ -116,12 +125,12 @@ const Signup = () => {
             <div className="form-control w-full max-w-xs">
               <input
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="Confirm Your Password"
                 className="mt-4 w-full max-w-xs border-b border-gray-300 focus:outline-none text-black"
-                {...register("email", {
+                {...register("password", {
                   required: {
                     value: true,
-                    message: "Confirm Password is required",
+                    message: " Password is required",
                   },
                   minLength: {
                     value: 6,
@@ -142,11 +151,11 @@ const Signup = () => {
                 )}
               </label>
             </div>
-            {/* {errorMessage} */}
+            {errorMessage}
             <input
-              className="btn  w-full max-w-xs yt1"
+              className="btn w-full max-w-xs text-black bg-white"
               type="submit"
-              value="Create an account"
+              value="Signup"
             />
           </form>
           <p className="text-sm flex justify-center items-center">
