@@ -4,8 +4,17 @@ import { Link } from "react-router-dom";
 import "../../../pages/home/Home.css";
 import fb from "../../../../assets/facebook.png";
 import g from "../../../../assets/google_.png";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import auth from "../../../../firebase.init";
 
 const Signup = () => {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+
   const {
     register,
     formState: { errors },
@@ -153,7 +162,10 @@ const Signup = () => {
               <h4 className="ml-10 text-sm ">Continue with Facebook</h4>
             </div>
           </div>
-          <div className="flex items-center h-10 border cursor-pointer rounded-3xl  w-full max-w-xs">
+          <div
+            onClick={() => signInWithGoogle()}
+            className="flex items-center h-10 border cursor-pointer rounded-3xl  w-full max-w-xs"
+          >
             <img className="w-6 ml-2 " src={g} alt="" />
             <div className="flex justify-center ">
               <h4 className="ml-10 text-sm ">Continue with Google</h4>
