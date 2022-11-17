@@ -10,7 +10,7 @@ const BookingList = () => {
       .then(data => setBooking(data.slice(0, 2)));
   }, []);
   return (
-    <div className="bookingContainer p-10">
+    <div className="bookingContainer min-h-full p-10">
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
         {booking.map(book => (
           <BookingLists key={book._id} book={book} />
