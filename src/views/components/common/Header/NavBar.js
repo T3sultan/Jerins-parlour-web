@@ -1,10 +1,20 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/parlour.png";
+import auth from "../../../../firebase.init";
 import CustomLink from "../../../../hooks/CustomLink";
 import "./Navbar.css";
+import { Icon } from "@iconify/react";
 
 const NavBar = () => {
+  const [user] = useAuthState(auth);
+
+  const handleSignOut = () => {
+    signOut(auth);
+  };
+
   const menuItems = (
     <>
       <li>
@@ -19,12 +29,17 @@ const NavBar = () => {
       <li>
         <CustomLink to="/contact">Contact</CustomLink>
       </li>
-      <li>
-        <CustomLink to="/login">Login</CustomLink>
-      </li>
-      <li>
-        <CustomLink to="/signup">Signup</CustomLink>
-      </li>
+      {user ? (
+        <li>
+          <CustomLink onClick={handleSignOut}>
+            <Icon className="w-14 h-8 " icon="uil:signout" />
+          </CustomLink>
+        </li>
+      ) : (
+        <li>
+          <CustomLink to="/login">Login</CustomLink>
+        </li>
+      )}
     </>
   );
   return (
