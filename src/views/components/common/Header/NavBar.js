@@ -4,9 +4,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/parlour.png";
 import auth from "../../../../firebase.init";
-import CustomLink from "../../../../hooks/CustomLink";
+// import CustomLink from "../../../../hooks/CustomLink";
 import "./Navbar.css";
 import { Icon } from "@iconify/react";
+import CustomLink from "../../../../hooks/CustomLink";
 
 const NavBar = () => {
   const [user] = useAuthState(auth);
@@ -29,6 +30,11 @@ const NavBar = () => {
       <li>
         <CustomLink to="/contact">Contact</CustomLink>
       </li>
+      {user && (
+        <li>
+          <CustomLink to="/dashboard">Dashboard</CustomLink>
+        </li>
+      )}
       {user ? (
         <li>
           <CustomLink onClick={handleSignOut}>
@@ -77,8 +83,31 @@ const NavBar = () => {
           />
         </Link>
       </div>
-      <div className=" hidden navbar-center lg:flex navbar-end">
-        <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+
+      <div className="navbar-end  ">
+        <div className=" hidden navbar-center lg:flex ">
+          <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+        </div>
+        <label
+          htmlFor="dashboard-sidebar"
+          tabIndex={1}
+          className="btn btn-ghost lg:hidden"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
       </div>
     </div>
   );

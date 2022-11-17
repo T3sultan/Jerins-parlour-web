@@ -1,9 +1,10 @@
 import React from "react";
+import InputBox from "../home/InputBox";
 
 const Contact = () => {
   return (
     <div>
-      <h2>contact</h2>
+      <InputBox />
     </div>
   );
 };
