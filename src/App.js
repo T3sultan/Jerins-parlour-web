@@ -16,6 +16,8 @@ import Review from "./views/pages/Dashboard/Review";
 import OrderList from "./views/pages/Dashboard/OrderList";
 import MakeAdmin from "./views/pages/Dashboard/MakeAdmin";
 import ManageServices from "./views/pages/Dashboard/ManageServices";
+import Mores from "./views/pages/More/Mores";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
         <Route path="/portfolio" element={<OurPortfolio />}></Route>
         <Route path="/team" element={<OurTeam />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/more" element={<Mores />}></Route>
 
         <Route
           path="dashboard"
@@ -47,6 +50,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

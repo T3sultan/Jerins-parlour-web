@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import useService from "../../../hooks/useService";
 import Button from "../../components/common/Button";
 import Service from "./Service";
 
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("/services.json")
+    fetch("http://localhost:5000/parlour")
       .then(res => res.json())
-      .then(data => setServices(data));
+      .then(data => setServices(data.slice(0, 3)));
   }, []);
+
   return (
     <div className="my-12 px-12">
       <h1 className="text-gray-800 font-bold text-3xl text-center ">
@@ -20,7 +23,9 @@ const Services = () => {
         ))}
       </div>
       <div className="flex justify-center mt-8">
-        <Button title={"Explore more"} />
+        <Link to="/more">
+          <Button title={"Explore more"} />
+        </Link>
       </div>
     </div>
   );
