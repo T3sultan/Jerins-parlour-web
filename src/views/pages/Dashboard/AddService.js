@@ -1,6 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./Dashboard.css";
 
 const AddService = () => {
   const handleSubmit = event => {
@@ -36,7 +37,7 @@ const AddService = () => {
   };
 
   return (
-    <div>
+    <div className="bookingContainer min-h-full">
       <div className=" ml-20 mt-6">
         <h2 className="text-start font-bold text-xl">Add Event</h2>
       </div>

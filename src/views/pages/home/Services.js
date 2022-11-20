@@ -23,7 +23,7 @@ const Services = () => {
         ))}
       </div>
       <div className="flex justify-center mt-8">
-        <Link to="/more">
+        <Link to="/portfolio">
           <Button title={"Explore more"} />
         </Link>
       </div>

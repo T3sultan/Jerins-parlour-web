@@ -1,9 +1,10 @@
 import React from "react";
+import Mores from "../More/Mores";
 
 const OurPortfolio = () => {
   return (
     <div>
-      <h2>Our Portfolio</h2>
+      <Mores />
     </div>
   );
 };
