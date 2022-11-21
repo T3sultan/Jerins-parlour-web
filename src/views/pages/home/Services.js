@@ -4,8 +4,9 @@ import useService from "../../../hooks/useService";
 import Button from "../../components/common/Button";
 import Service from "./Service";
 
-const Services = () => {
+const Services = ({ date, setDate }) => {
   const [services, setServices] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:5000/parlour")
       .then(res => res.json())
@@ -19,7 +20,7 @@ const Services = () => {
       </h1>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
         {services.map(service => (
-          <Service key={service._id} service={service}></Service>
+          <Service date={date} key={service._id} service={service}></Service>
         ))}
       </div>
       <div className="flex justify-center mt-8">

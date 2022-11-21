@@ -18,6 +18,7 @@ import MakeAdmin from "./views/pages/Dashboard/MakeAdmin";
 import ManageServices from "./views/pages/Dashboard/ManageServices";
 import Mores from "./views/pages/More/Mores";
 import { ToastContainer } from "react-toastify";
+import Payment from "./views/pages/Dashboard/Payment";
 
 function App() {
   return (
@@ -39,10 +40,12 @@ function App() {
             </RequiredAuth>
           }
         >
-          <Route index element={<Book />}></Route>
+          {/* <Route index element={<Book />}></Route> */}
           <Route path="bookList" element={<BookingList />}></Route>
           <Route path="review" element={<Review />}></Route>
           <Route path="order" element={<OrderList />}></Route>
+          <Route path="payment/:id" element={<Payment />}></Route>
+
           <Route path="addService" element={<AddService />}></Route>
           <Route path="makeAdmin" element={<MakeAdmin />}></Route>
           <Route path="manageService" element={<ManageServices />}></Route>

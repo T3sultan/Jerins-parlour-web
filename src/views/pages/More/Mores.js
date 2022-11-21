@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import useService from "../../../hooks/useService";
 import Loading from "../../components/common/Loading";
-import Service from "../home/Service";
+import Servicess from "../Dashboard/Servicess";
 import Modal from "./Modal";
 
 const Mores = () => {
   const [treatment, setTreatment] = useState(null);
-  // const [services] = useService();
 
   const {
     data: services,
@@ -26,11 +24,11 @@ const Mores = () => {
       </h1>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-4">
         {services.map(service => (
-          <Service
+          <Servicess
             setTreatment={setTreatment}
             key={service._id}
             service={service}
-          ></Service>
+          ></Servicess>
         ))}
       </div>
       {treatment && (

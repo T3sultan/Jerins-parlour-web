@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import auth from "../../../firebase.init";
 import { Icon } from "@iconify/react";
 import CustomLink from "../../../hooks/CustomLink";
@@ -30,7 +30,7 @@ const Dashboard = () => {
                 icon="material-symbols:shopping-cart-outline-rounded"
               />
 
-              <h3 className="font-bold ">Book</h3>
+              <h3 className="font-bold ">Book List</h3>
             </CustomLink>
           </li>
           <li>

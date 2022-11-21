@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 
-const Service = ({ service }) => {
+const Servicess = ({ service, setTreatment }) => {
   const { name, image, price, description } = service;
 
   return (
@@ -14,8 +14,18 @@ const Service = ({ service }) => {
         <p className="text-red-300 font-bold"> ${price}</p>
         <p className="text-sm text-gray-400">{description}</p>
       </div>
+      <div className="card-actions justify-center -mt-8 ">
+        <label
+          onClick={() => setTreatment(service)}
+          htmlFor="booking-modal"
+          className="btn-sm rounded cursor-pointer
+             text-black  border-none "
+        >
+          <Icon width="24px" color="gray" icon="ic:outline-remove-red-eye" />
+        </label>
+      </div>
     </div>
   );
 };
 
-export default Service;
+export default Servicess;
