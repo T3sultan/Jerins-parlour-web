@@ -65,40 +65,40 @@ const Dashboard = () => {
               <h3 className="font-bold ">Order List</h3>
             </CustomLink>
           </li>
-          {/* {admin && (
-            <> */}
-          <li>
-            <CustomLink
-              className="flex items-center gap-1"
-              to="/dashboard/addService"
-            >
-              <Icon width="22px" icon="material-symbols:add" />
+          {admin && (
+            <>
+              <li>
+                <CustomLink
+                  className="flex items-center gap-1"
+                  to="/dashboard/addService"
+                >
+                  <Icon width="22px" icon="material-symbols:add" />
 
-              <h3 className="font-bold ">Add Service</h3>
-            </CustomLink>
-          </li>
-          <li>
-            <CustomLink
-              className="flex items-center gap-1"
-              to="/dashboard/makeAdmin"
-            >
-              <Icon width="22px" icon="clarity:administrator-line" />
+                  <h3 className="font-bold ">Add Service</h3>
+                </CustomLink>
+              </li>
+              <li>
+                <CustomLink
+                  className="flex items-center gap-1"
+                  to="/dashboard/makeAdmin"
+                >
+                  <Icon width="22px" icon="clarity:administrator-line" />
 
-              <h3 className="font-bold ">Make Admin</h3>
-            </CustomLink>
-          </li>
-          <li>
-            <CustomLink
-              className="flex items-center gap-1"
-              to="/dashboard/manageService"
-            >
-              <Icon width="22px" icon="arcticons:activity-manager" />
+                  <h3 className="font-bold ">Make Admin</h3>
+                </CustomLink>
+              </li>
+              <li>
+                <CustomLink
+                  className="flex items-center gap-1"
+                  to="/dashboard/manageService"
+                >
+                  <Icon width="22px" icon="arcticons:activity-manager" />
 
-              <h3 className="font-bold ">Manage Services</h3>
-            </CustomLink>
-          </li>
-          {/* </>
-          )} */}
+                  <h3 className="font-bold ">Manage Services</h3>
+                </CustomLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>

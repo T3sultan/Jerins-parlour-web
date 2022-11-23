@@ -48,7 +48,14 @@ function App() {
           <Route path="payment/:id" element={<Payment />}></Route>
 
           <Route path="addService" element={<AddService />}></Route>
-          <Route path="makeAdmin" element={<MakeAdmin />}></Route>
+          <Route
+            path="makeAdmin"
+            element={
+              <RequireAdmin>
+                <MakeAdmin />
+              </RequireAdmin>
+            }
+          ></Route>
           <Route path="manageService" element={<ManageServices />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
