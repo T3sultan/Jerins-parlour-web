@@ -40,7 +40,7 @@ function App() {
             </RequiredAuth>
           }
         >
-          {/* <Route index element={<Book />}></Route> */}
+          <Route index element={<Book />}></Route>
           <Route path="bookList" element={<BookingList />}></Route>
           <Route path="review" element={<Review />}></Route>
           <Route path="order" element={<OrderList />}></Route>

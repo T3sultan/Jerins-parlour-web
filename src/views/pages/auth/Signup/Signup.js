@@ -11,6 +11,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
 import Loading from "../../../components/common/Loading";
+import useToken from "../../../../hooks/useToken";
 
 const Signup = () => {
   const [updateProfile, updating, uerror] = useUpdateProfile(auth);
@@ -19,6 +20,7 @@ const Signup = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
+  const [token] = useToken(user || guser);
 
   const {
     register,
@@ -26,11 +28,12 @@ const Signup = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async data => {
-    console.log(data);
+    // console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     console.log("update data");
     // navigate("/home");
+    navigate("/more");
   };
   let errorMessage;
   if (loading || gloading || updating) {
@@ -43,8 +46,8 @@ const Signup = () => {
       </p>
     );
   }
-  if (user || guser) {
-    navigate("/home");
+  if (token) {
+    navigate("/more");
   }
 
   return (

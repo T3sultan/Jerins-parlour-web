@@ -10,17 +10,39 @@ const BookingList = () => {
   const [booking, setBooking] = useState([]);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   if (user) {
+  //     const url = `http://localhost:5000/booking/${user?.email}`;
+  //     fetch(url)
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         console.log(data);
+  //         setBooking(data);
+  //       });
+  //   }
+  // }, [user?.email]);
   useEffect(() => {
     if (user) {
-      const url = `http://localhost:5000/booking/${user?.email}`;
-      fetch(url)
-        .then(res => res.json())
+      fetch(`http://localhost:5000/booking?patient=${user.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then(res => {
+          console.log("res", res);
+          if (res.status === 401 || res.status === 403) {
+            signOut(auth);
+            localStorage.removeItem("accessToken");
+            navigate("/");
+          }
+          return res.json();
+        })
         .then(data => {
-          console.log(data);
           setBooking(data);
         });
     }
-  }, [user?.email]);
+  }, [user]);
 
   return (
     <div className="bookingContainer min-h-full p-10">

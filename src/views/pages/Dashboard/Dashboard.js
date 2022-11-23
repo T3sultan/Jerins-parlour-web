@@ -30,7 +30,7 @@ const Dashboard = () => {
                 icon="material-symbols:shopping-cart-outline-rounded"
               />
 
-              <h3 className="font-bold ">Book List</h3>
+              <h3 className="font-bold ">Book </h3>
             </CustomLink>
           </li>
           <li>
