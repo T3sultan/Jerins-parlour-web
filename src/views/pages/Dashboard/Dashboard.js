@@ -4,9 +4,11 @@ import { Outlet } from "react-router-dom";
 import auth from "../../../firebase.init";
 import { Icon } from "@iconify/react";
 import CustomLink from "../../../hooks/CustomLink";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
 
   return (
     <div className="drawer drawer-mobile">
@@ -63,6 +65,8 @@ const Dashboard = () => {
               <h3 className="font-bold ">Order List</h3>
             </CustomLink>
           </li>
+          {/* {admin && (
+            <> */}
           <li>
             <CustomLink
               className="flex items-center gap-1"
@@ -93,6 +97,8 @@ const Dashboard = () => {
               <h3 className="font-bold ">Manage Services</h3>
             </CustomLink>
           </li>
+          {/* </>
+          )} */}
         </ul>
       </div>
     </div>

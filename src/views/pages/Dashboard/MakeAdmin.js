@@ -1,22 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
+import Loading from "../../components/common/Loading";
+import UserTable from "./UserTable";
 
 const MakeAdmin = () => {
-  const [user, setUser] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/user")
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setUser(data);
-      });
-  }, []);
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
+    fetch(`http://localhost:5000/user`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then(res => res.json())
+  );
+  if (isLoading) {
+    return <Loading />;
+  }
 
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
   return (
     <div>
-      <h2>make admin : {user.length}</h2>
+      <h2>make admin : {users.length}</h2>
+      <div className=" min-h-full  bookingContainer  ">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Email</th>
+              <th>Title </th>
+              <th>Button</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
+              <UserTable
+                index={index}
+                key={user._id}
+                user={user}
+                refetch={refetch}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

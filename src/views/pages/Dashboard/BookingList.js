@@ -10,17 +10,6 @@ const BookingList = () => {
   const [booking, setBooking] = useState([]);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (user) {
-  //     const url = `http://localhost:5000/booking/${user?.email}`;
-  //     fetch(url)
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         console.log(data);
-  //         setBooking(data);
-  //       });
-  //   }
-  // }, [user?.email]);
   useEffect(() => {
     if (user) {
       fetch(`http://localhost:5000/booking?patient=${user.email}`, {
@@ -49,7 +38,10 @@ const BookingList = () => {
       <h3>{booking.length}</h3>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
         {booking.map(book => (
-          <div className="card cursor-pointer bg-white border-gray-200 transition transform duration-500 hover:shadow-lg hover:scale-100 rounded relative">
+          <div
+            key={book._id}
+            className="card cursor-pointer bg-white border-gray-200 transition transform duration-500 hover:shadow-lg hover:scale-100 rounded relative"
+          >
             <div className="flex justify-between items-center pt-6">
               <img
                 src={book.image}
