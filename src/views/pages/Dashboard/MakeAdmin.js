@@ -22,16 +22,16 @@ const MakeAdmin = () => {
   }
 
   return (
-    <div>
-      <h2>make admin : {users.length}</h2>
-      <div className=" min-h-full  bookingContainer  ">
+    <div className=" min-h-full  bookingContainer  ">
+      {/* <h2>make admin : {users.length}</h2> */}
+      <div>
         <table className="table w-full">
           <thead>
             <tr>
               <th>#</th>
               <th>Email</th>
               <th>Title </th>
-              <th>Button</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
