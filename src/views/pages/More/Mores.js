@@ -12,7 +12,9 @@ const Mores = () => {
     isLoading,
     refetch,
   } = useQuery(["parlour"], () =>
-    fetch("http://localhost:5000/parlour").then(res => res.json())
+    fetch("https://backend-theta-smoky.vercel.app/parlour").then(res =>
+      res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;

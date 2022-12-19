@@ -6,7 +6,7 @@ const DeleteModalService = ({ refetch, serviceDelete, setServiceDelete }) => {
   const { name, email } = serviceDelete;
 
   const handleDelete = () => {
-    fetch(`http://localhost:5000/parlourManage/${email}`, {
+    fetch(`https://backend-theta-smoky.vercel.app/parlourManage/${email}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

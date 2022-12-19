@@ -14,7 +14,7 @@ const AddService = () => {
 
     const all = { name, description, image, price, color };
 
-    const url = `http://localhost:5000/parlour`;
+    const url = `https://backend-theta-smoky.vercel.app/parlour`;
     fetch(url, {
       method: "POST",
       headers: {

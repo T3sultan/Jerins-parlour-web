@@ -6,7 +6,7 @@ const UserTable = ({ user, refetch, index }) => {
   const { email, role } = user;
 
   const makeAdminUser = () => {
-    const url = `http://localhost:5000/user/admin/${email}`;
+    const url = `https://backend-theta-smoky.vercel.app/user/admin/${email}`;
     fetch(url, {
       method: "PUT",
       headers: {

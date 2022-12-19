@@ -9,7 +9,7 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch(`http://localhost:5000/user`, {
+    fetch(`https://backend-theta-smoky.vercel.app/user`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

@@ -11,7 +11,7 @@ const ManageServices = () => {
     isLoading,
     refetch,
   } = useQuery("manage", () =>
-    fetch(`http://localhost:5000/parlourManage`, {
+    fetch(`https://backend-theta-smoky.vercel.app/parlourManage`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

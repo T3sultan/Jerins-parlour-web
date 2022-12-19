@@ -19,7 +19,7 @@ const Modal = ({ treatment, setTreatment, refetch }) => {
       patientName: user.displayName,
       phone: event.target.phone.value,
     };
-    fetch("http://localhost:5000/booking", {
+    fetch("https://backend-theta-smoky.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
